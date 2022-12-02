@@ -8,3 +8,8 @@ Download:
 Eclipse Download:  https://www.eclipse.org/downloads/
 
 Maven Download: https://maven.apache.org/download.cgi
+
+Step to setup maven in window:
+1. unzip the zip file
+2. copy the path ->parent of bin folder. eg: D:\apache-maven-3.8.6-bin\apache-maven-3.8.6
+3. open the e
