@@ -26,7 +26,7 @@ mvn --version
 
 
 
-Add the below dependencies in pom.xml
+6. Add the below dependencies in pom.xml
 <dependencies>
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -39,3 +39,10 @@ Add the below dependencies in pom.xml
 			<version>${spring.version}</version>
 		</dependency>
 	</dependencies>
+
+
+7. Add the properties tag 
+
+        <properties>
+		<spring.version>5.1.1.RELEASE</spring.version>
+	</properties>
