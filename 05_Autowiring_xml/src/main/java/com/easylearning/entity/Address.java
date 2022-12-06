@@ -4,6 +4,7 @@ public class Address {
 
 	private String city;
 	private String pinCode;
+	private Street street;
 
 	public Address() {
 		System.out.println("default address constructor called...");
@@ -31,9 +32,17 @@ public class Address {
 		this.pinCode = pinCode;
 	}
 
+	public Street getStreet() {
+		return street;
+	}
+
+	public void setStreet(Street street) {
+		this.street = street;
+	}
+
 	@Override
 	public String toString() {
-		return "Address [city=" + city + ", pinCode=" + pinCode + "]";
+		return "Address [city=" + city + ", pinCode=" + pinCode + ", street=" + street + "]";
 	}
 
 }

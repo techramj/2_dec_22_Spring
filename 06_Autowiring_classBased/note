@@ -1,0 +1,18 @@
+key point:
+lazy-init
+autowire-candidate="false"
+
+
+Scope of Bean:
+1. Singleton (default)
+2. prototype
+3. request
+4. application
+
+
+when context object is created, all bean which are sigleton,lazy-init="false" in config file will be created
+
+Type of Autowiring:
+1. byName
+2. ByType
+3. constructor

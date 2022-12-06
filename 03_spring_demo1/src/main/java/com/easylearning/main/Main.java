@@ -5,6 +5,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.easylearning.entity.Address;
+import com.easylearning.entity.Employee;
 
 public class Main {
 
@@ -33,11 +34,67 @@ public class Main {
 		Address address = context.getBean("add2", Address.class);
 		System.out.println(address);
 	}
+	
+	public static ApplicationContext getApplicationContext(String filename) {
+		ApplicationContext context = new ClassPathXmlApplicationContext(filename);
+		return context;
+	}
+	
+	public static ApplicationContext getApplicationContext(Class clazz) {
+		ApplicationContext context = new AnnotationConfigApplicationContext(clazz);
+		return context;
+	}
+	
+	public static void springXMlExample2() {
+		ApplicationContext context = getApplicationContext("spring.xml");
+		Address address = context.getBean("address", Address.class);
+		Employee employee = context.getBean("employee",Employee.class);
+		System.out.println(address);
+		System.out.println(employee);
+		
+		//equality of an object
+	     Address add1 = new Address("pune", "123456");
+	     Address add2 = new Address("pune", "123456");
+	     
+	     System.out.println(add1 == add2);
+	     
+	     Address address1 = context.getBean("address", Address.class);
+		 Employee employee1 = context.getBean("employee",Employee.class);
+		 System.out.println(address1 == address);
+		 System.out.println(employee == employee1);
+	}
+	
+	public static void springXMlExample3() {
+		ApplicationContext context = getApplicationContext("spring.xml");
+		delay(3);
+		Address add1 = context.getBean("address", Address.class);
+		Address add2 = context.getBean("address", Address.class);
+		System.out.println(add1 == add2);
+		
+		Employee emp1 = context.getBean("employee",Employee.class);
+		Employee emp2 = context.getBean("employee",Employee.class);
+		System.out.println(emp1==emp2);
+	}
+	
+	public static void constructorDemo() {
+		ApplicationContext context = getApplicationContext("spring.xml");
+		Employee emp = context.getBean("emp1", Employee.class);
+		System.out.println(emp);
+		
+		Employee emp2 = context.getBean("emp2", Employee.class);
+		System.out.println(emp2);
+	}
 
 	public static void main(String[] args) {
-		// coreJavaDemo();
-		//springXmlBasedDemo();
-		annotationBasedDemo();
+		constructorDemo();
+	}
+	
+	public static void delay(int timeInSecond) {
+		try {
+			Thread.sleep(timeInSecond*1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

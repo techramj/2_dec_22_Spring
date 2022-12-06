@@ -8,29 +8,39 @@
         http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
         http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
-   <bean name="address" class="com.easylearning.entity.Address" lazy-init="true">
+   <bean name="address" class="com.easylearning.entity.Address"  autowire="byType">
    		<property name="city" value="pune"></property>
    		<property name="pinCode" value ="411021"/>
    </bean>
 
-   <bean name="employee" class="com.easylearning.entity.Employee" scope="prototype">
+   <bean name="employee" class="com.easylearning.entity.Employee" autowire="byName">
    		<property name="id" value="1"/>
    		<property name="name" value="Jack"/>
    		<property name="salary" value="5000"></property>
    </bean>
    
+   <bean name="street1" class="com.easylearning.entity.Street" autowire-candidate="false">
+   		<property name="streetNumber" value="123"/>
+   		<property name="name" value="Lane-123"/>
+   </bean>
+   
+   <bean name="street2" class="com.easylearning.entity.Street">
+   		<property name="streetNumber" value="2"/>
+   		<property name="name" value="Lane-002"/>
+   </bean>
+   
+   
+   <bean name="project" class="com.easylearning.entity.Project">
+   		<property name="name"  value="Health Management"></property>
+   </bean>
+   
    
    <bean name="emp1" class="com.easylearning.entity.Employee">
-   		<constructor-arg index="0" value="2"/>
-   		<constructor-arg index="1" value="Johny"/>
-   		<constructor-arg index="2" value="2000"/>
+   		<constructor-arg name="id" value="1"/>
+   		<constructor-arg name="name" value="Jack"/>
+   		<constructor-arg name="salary" value="5000"/>
+   		<property name="address" ref="address"></property>
+   		<property name="project" ref="project"></property>
    </bean>
-   
-     <bean name="emp2" class="com.easylearning.entity.Employee">
-   		<constructor-arg name="id" value="3"/>
-   		<constructor-arg name="salary" value="3000"/>
-   		<constructor-arg name="name" value="Jessica"/>
-   </bean>
-   
 
 </beans>

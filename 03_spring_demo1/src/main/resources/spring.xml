@@ -8,14 +8,28 @@
         http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
         http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
-   <bean name="address" class="com.easylearning.entity.Address">
+   <bean name="address" class="com.easylearning.entity.Address" lazy-init="true">
    		<property name="city" value="pune"></property>
    		<property name="pinCode" value ="411021"/>
    </bean>
+
+   <bean name="employee" class="com.easylearning.entity.Employee" scope="prototype">
+   		<property name="id" value="1"/>
+   		<property name="name" value="Jack"/>
+   		<property name="salary" value="5000"></property>
+   </bean>
    
-   <bean name="address1" class="com.easylearning.entity.Address">
-   		<property name="city" value="Bhopal"></property>
-   		<property name="pinCode" value ="123411"/>
+   
+   <bean name="emp1" class="com.easylearning.entity.Employee">
+   		<constructor-arg index="0" value="2"/>
+   		<constructor-arg index="1" value="Johny"/>
+   		<constructor-arg index="2" value="2000"/>
+   </bean>
+   
+     <bean name="emp2" class="com.easylearning.entity.Employee">
+   		<constructor-arg name="id" value="3"/>
+   		<constructor-arg name="salary" value="3000"/>
+   		<constructor-arg name="name" value="Jessica"/>
    </bean>
    
 
