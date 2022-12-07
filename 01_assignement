@@ -1,0 +1,37 @@
+
+   Employee
+       id:Integer
+       name:String
+       salary:Double
+       vehicle:Vehicle
+       
+    Vehicle:
+       name:String
+       start();
+       stop();
+       
+     Bike:
+       override the method start and stop
+       
+     Car:
+       override the method start and stop
+       
+     Jeep:
+       override the method start and stop
+       
+  
+spring.xml
+    create bean of Emp, bike,car,Truck
+    
+ Main:
+    Create three employee, bike,car,jeep bean using constructor
+    employee has  a bike
+    employee has a car
+    employee has a Jeep
+    
+    
+    Create three employee, bike,car,jeep bean using constructor
+    employee has  a bike
+    employee has a car
+    employee has a Jeep
+
