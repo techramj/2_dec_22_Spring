@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	<bean name="bike" class="com.easylearning.entity.Bike">
+		<property name="name" value="RE" />
+	</bean>
+
+	<bean name="car" class="com.easylearning.entity.Car">
+		<property name="name" value="Tata Safari" />
+	</bean>
+
+	<bean name="jeep" class="com.easylearning.entity.Jeep">
+		<constructor-arg name="name" value="Gorkha" />
+	</bean>
+	
+	<bean name="empWithBike" class="com.easylearning.entity.Employee">
+		<property name="id" value="1" />
+		<property name="name" value="Jack" />
+		<property name="salary" value="2000" />
+		<property name="vehicle" ref="bike" />
+	</bean>
+	
+	<bean name="empWithCar" class="com.easylearning.entity.Employee">
+		<property name="id" value="2" />
+		<property name="name" value="Jackie" />
+		<property name="salary" value="2000" />
+		<property name="vehicle" ref="car" />
+	</bean>
+	
+	<bean name="empWithJeep" class="com.easylearning.entity.Employee">
+		<constructor-arg name="id" value="2" />
+		<constructor-arg name="name" value="Jackie" />
+		<constructor-arg name="salary" value="2000" />
+		<constructor-arg name="vehicle" ref="jeep" />
+	</bean>
+	
+
+</beans>
