@@ -7,9 +7,18 @@
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
         http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
         http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
-
-   <context:component-scan base-package="com.easylearning.entity"></context:component-scan>
-   
-   <bean name="address" class ="com.easylearning.entity.Address"></bean>
-
-</beans>
+        
+        
+        <bean name="address1" class="com.easylearning.entity.Address"  scope="singleton"
+        init-method="init" destroy-method="destroy">
+        	<property name="city" value="pune"></property>
+        </bean>
+        
+        <bean class="com.easylearning.entity.MyBeanPostProcessor" />
+        
+        <bean name="bike" class="com.easylearning.entity.Bike" scope="prototype" />
+        
+        
+        
+        
+ </beans>

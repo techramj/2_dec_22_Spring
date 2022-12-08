@@ -9,7 +9,6 @@ public class Address {
 	private String city;
 	private String pinCode;
 	
-	@Autowired
 	private Street street;
 
 	public Address() {

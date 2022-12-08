@@ -1,0 +1,7 @@
+object
+setter
+name to the bean
+
+scope of bean:
+  singleton
+  
