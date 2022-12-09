@@ -1,0 +1,3 @@
+@Embeddable
+@Embedded
+@AttributeOverrides
