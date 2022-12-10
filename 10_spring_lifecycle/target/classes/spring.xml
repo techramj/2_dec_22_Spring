@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+
+      <bean id="address2" class="com.easylearning.entity.Address" 
+		       init-method="init" destroy-method="customDestroy" scope="singleton" lazy-init="true">
+			<constructor-arg name="city" value="Pune" />
+	 </bean>
+	 
+	 <bean name="sampleBean" class="com.easylearning.entity.SampleBean"></bean>
+	 
+	 <bean name="ticket" class="com.easylearning.entity.Ticket" scope="prototype">
+	 </bean>
+	 
+	 <bean name="machine" class="com.easylearning.entity.TicketVendorMachine" scope="singleton">
+	 	<lookup-method name="getTicket"  bean="ticket"/>
+	 </bean>
+
+</beans>
