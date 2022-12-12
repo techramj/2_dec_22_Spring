@@ -1,0 +1,45 @@
+Lab:
+1.create one class SampleBean and check the lifecycle
+2.create bean of Employee. Employee has a Address
+	Employee
+	  id:Integer
+	  name:String
+	  salary:Double
+	  address:Address
+	  
+	Address
+	  city:String
+	  pincode:String
+	  
+	check when bean is created.
+	a> add the properties in the bean => lazy-init with value true and false.
+	   after adding check when object is created.
+	b>
+	check as follow
+	case 1:
+	  employee: singleton         address:singleton
+	  employee:prototype		  address:prototype
+	  employee:prototype		  address:singleton
+	  employee:singleton		  address:prototype
+	  
+	  create two bean of employee.check whether we get same object or different object
+	  
+	 emp1 == emp2
+	 emp1.getAddress() == emp2.getAddress()
+	 
+3. Create class TicketVendorMachine and Ticket.
+   TicketVendoreMachine
+       ticket:Ticket
+       
+    Ticket:
+       ticketNo:int (Auto generated)
+       
+ create the bean in such a way that TicketVendor machine always give the new ticket.
+ 
+ 
+ 
+ 4.read the properties file
+  a. add the file in resource folder  
+  b. add the file in any folder. read using absolute path
+  
+ 
