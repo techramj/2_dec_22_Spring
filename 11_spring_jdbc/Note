@@ -1,0 +1,35 @@
+frontend -> controller -> service -> Dao -> db
+
+n -tier architecture(separitng the task)
+
+
+spring to inject datasource
+Connection
+    Statement
+    PreparedStatement
+    CallableStatement
+    
+    executeUpdate() : DML(insert, update, delete)
+    executeQuery() :  Select
+    execute() : for all the query
+    
+    DriverManagerDataSource
+    
+    SingleConnectionDataSource
+    
+ Assignement 1:
+ spring.xml
+ 
+ Assignment 2:
+ JavaConfig
+ 
+ Assingment 3:
+ spring.xml 
+ @Component/@Autowired
+ 
+ Assignment 4:
+ JavaConfig
+ @Component/@Autowired
+ 
+    
+    
