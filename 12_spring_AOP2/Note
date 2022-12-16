@@ -1,0 +1,34 @@
+AOP: Aspect oriented programming
+
+
+Spring AOP:
+
+LoanService     loginAspect    => ProxyClass
+                Transaction       LoanService
+                
+                
+
+ LoanSeriveProxy extends LoanService{
+    List<MethodBeforeAdvice> list = new AL<>
+   issueLoan(){
+   		list.stream().forEach(l -> l.before());
+   		super.issueLoan();
+   		list1.stream().forEach(l->l.afterRetruning());
+   } 
+ 	
+ }
+ 
+
+ what method body
+ when
+ where
+ 
+ 
+ 
+ 
+ Advice:
+ @Before
+ @After
+ @AfterReturning
+ @AfterTHrowing
+ @Around

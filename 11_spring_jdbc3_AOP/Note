@@ -1,0 +1,7 @@
+AOP: Aspect oriented programming
+
+
+Spring AOP:
+
+LoanService     Aspect    => ProxyClass
+                                  LoanService
