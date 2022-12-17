@@ -32,3 +32,29 @@ LoanService     loginAspect    => ProxyClass
  @AfterReturning
  @AfterTHrowing
  @Around
+ 
+ 
+ try{
+      @Before
+ 	//code
+ 	 @AfterReturning
+ }catch(){
+ 	 @AfterTHrowing
+ }
+ finally{
+   @After
+ 
+ }
+ 
+ public void payDue(String customerId) {
+		System.out.println("Entered: " + "LoanService : payDue at " + LocalDateTime.now());
+
+		System.out.println("Begin transaction");
+		try {
+			System.out.println("Pending due cleared: " + customerId);
+			System.out.println("Commit transaction");
+		} catch (Exception e) {
+			System.out.println("Rollback Transaction");
+		}
+		System.out.println("Exit: " + "LoanService : payDue at " + LocalDateTime.now());
+	}

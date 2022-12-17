@@ -12,8 +12,11 @@
 
 	<bean id="loanService"
 		class="com.easylearning.service.LoanService" />
+		
 	<bean id="logBeforeAndAfter"
 		class="com.easylearning.service.LogBeforeAndAfter" />
+		
+	
 
 
 </beans>
