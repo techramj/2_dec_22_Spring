@@ -58,3 +58,43 @@ LoanService     loginAspect    => ProxyClass
 		}
 		System.out.println("Exit: " + "LoanService : payDue at " + LocalDateTime.now());
 	}
+	
+	
+Advice: (what & when) the job of an aspect
+	@Before
+	@After
+	@AfteReturning
+	@AfterThrowing
+	@Around
+	
+	
+JoinPoint: (where) a point in execution of the application where and aspect can be plugged in
+
+Pointcut: one or more joinpoints at which advice should be woven
+
+Aspect:  is a merger of advice & pointcut
+
+proxy: the object created after applying advice to the target object
+
+weaving: the process of applying aspects to create a new proxied object
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

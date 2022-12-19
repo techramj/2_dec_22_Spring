@@ -1,0 +1,63 @@
+Transaction:
+ programmatic
+   PlatformTransactionManager
+   TransactionTemplate
+   
+ Declarative way
+   --spring Aop
+   --Annotations
+   
+ -Supports many transaction properties
+   a> propagation
+   		REQUIRED
+   		REQUIRES_NEW
+   		SUPPORTS
+   		NOT_SUPPORTED
+   		NESTED
+   		NEVER
+   		MANDATORY
+   		
+   b>islolation level
+   c> timeout
+   d> readonly
+   e>rollback condition
+ 
+ 
+ Isolation: transaction impacted/behaviour when concurrent transaction 
+ 
+ 
+ Transaction Isolation Issue
+   -Lost update
+   -Dirty Read
+   -unrepeatable read
+   -phantom read
+   
+   
+   
+ 1000
+ 
+ Transaction A: select amount id=1 1000
+ Transaction B: Update the amount from 1000 to 2000
+ 
+ 
+ Dirty Read problem
+ Transaction A updates a row but not commit  1000-> 2000  not commit
+ Transaction B: select the same row and read the not commited value: 2000
+ Transaction A: rollback.
+ 
+ 
+ unrepeatable read:
+ Transaction 1: select salary from emp where id=1; 5000
+ Transaction 2: update emp set salray =10000 where id=1;
+ 
+ phantom read:
+Transaction 1: select sum(salary) from emp; 300000
+Transaction 2:  insert into emp values (11111,'jack',10000);
+
+
+Isolation level:
+   Read uncommitted:
+   Read committed.
+   repeatable read:
+   serializable
+   

@@ -1,5 +1,8 @@
 package com.easylearning.service;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class LoanService {
 
 	public void issueLoan(String customerId) {

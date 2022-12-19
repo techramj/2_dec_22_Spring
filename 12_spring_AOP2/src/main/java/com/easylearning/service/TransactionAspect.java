@@ -3,8 +3,10 @@ package com.easylearning.service;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+@Order(1)
 @Aspect
 public class TransactionAspect {
 
@@ -19,6 +21,5 @@ public class TransactionAspect {
 			System.out.println("Rollback Transaction");
 			throw e;
 		}
-
 	}
 }
