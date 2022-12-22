@@ -1,0 +1,67 @@
+
+springboot
+  --autoconfiguration
+  --embedded server
+         Tomcat
+         Jetty
+
+ems                                        bank
+  -loan upto 1lakh anytime                application - jar
+  
+                                           getLoan(..... );
+
+
+
+soap
+
+rest
+
+
+http method
+  get
+  post
+  put
+  delete
+  options
+  trace
+  
+  
+
+@Restcontroler => @Controller + @Repsonebody
+  
+
+
+http://localhost:8081/greet
+
+
+
+
+
+
+
+@Component
+@Controller spring mvc
+@Service  => service class
+@Repository  => dao
+
+
+
+getEmployee
+  /employee
+  
+getEmployeById
+  /emp?id=1
+  /employee/1  => /employee/{id}
+  
+
+addEmployee
+  /employee
+
+
+
+
+
+
+
+
+ 
