@@ -1,0 +1,23 @@
+
+class
+Employee
+   id
+   name
+   salary
+   
+   
+DB
+ Emp
+   id
+   firstname
+   salary
+ step 0: add the dependency
+ 
+ <dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-web</artifactId>
+</dependency>  
+		
+ Step 1: Mapping of entity
+ 
+ Step 2: 
