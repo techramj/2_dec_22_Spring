@@ -59,6 +59,41 @@ addEmployee
 
 
 
+Assignment:
+
+controller
+  EmployeeController
+       crud operation
+Service
+  EmployeeService
+  EmployeeServiceImpl
+Dao
+  EmployeeDao
+  EmployeeDaoImpl
+      JdbcTemplate
+DB
+  H2
+
+
+spring initialzr
+  spring web
+  spring jdbc
+  spring dev-tool
+  H2
+  
+
+
+
+JDK / JRE
+
+javac Employee.java
+     Employee.java => Employee.class
+     
+java Employee
+
+
+100 tables
+
 
 
 

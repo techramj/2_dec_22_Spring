@@ -1,15 +1,13 @@
 package com.easylearning.dao.impl;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import com.easylearning.dao.EmployeeDao;
+import com.easylearning.dao.mapper.EmployeeMapper;
 import com.easylearning.entity.Employee;
 
 @Repository
@@ -17,6 +15,9 @@ public class EmployeeDaoImpl implements EmployeeDao{
 	
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
+	
+	@Autowired
+	private EmployeeMapper empMapper;
 
 	@Override
 	public Employee findById(int id) {
@@ -25,7 +26,9 @@ public class EmployeeDaoImpl implements EmployeeDao{
 
 	@Override
 	public List<Employee> findAll() {
-		return jdbcTemplate.query("select * from emp", new EmployeeRowMapper());
+		/*return jdbcTemplate.query("select * from emp", 
+		      new BeanPropertyRowMapper<Employee>(Employee.class)); */
+		return jdbcTemplate.query("select * from emp", empMapper);
 	}
 
 	@Override
@@ -46,13 +49,4 @@ public class EmployeeDaoImpl implements EmployeeDao{
 		
 	}
 	
-	class EmployeeRowMapper implements RowMapper<Employee>{
-
-		@Override
-		public Employee mapRow(ResultSet rs, int rowNum) throws SQLException {
-			return new Employee(rs.getInt(1), rs.getString(2), rs.getDouble(3));
-		}
-		
-	}
-
 }
