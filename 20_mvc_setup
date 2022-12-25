@@ -1,0 +1,250 @@
+step 1: create a simple maven project 
+     a> skip the archtype selection
+     b> select packaging as war.
+
+________________________________________________________________________________________________
+ step 2: copy the below set in pom.xml file
+ 
+ <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.easylearning</groupId>
+  <artifactId>106-mvc_demo1</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
+  <name>106-mvc_demo1</name>
+  
+  
+  
+  
+  
+  
+  <dependencies>
+		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-web-api</artifactId>
+			<version>6.0</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+  
+    <build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.2</version>
+					<configuration>
+						<verbose>true</verbose>
+						<source>1.7</source>
+						<target>1.7</target>
+						<showWarnings>true</showWarnings>
+					</configuration>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-war-plugin</artifactId>
+					<version>3.3.1</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.tomcat.maven</groupId>
+					<artifactId>tomcat7-maven-plugin</artifactId>
+					<version>2.2</version>
+					<configuration>
+						<path>/</path>
+						<contextReloadable>true</contextReloadable>
+						<port>8081</port>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+		<finalName>check</finalName>
+	</build>
+  
+  
+  
+  
+  
+</project>
+ 
+__________________________________________________________________________________________________________ 
+ 
+ step 3: add the web.xml file
+ 
+ 
+ <web-app    xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+                                http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+            id="WebApp_ID" version="3.1">
+         
+        <welcome-file-list>
+        	<welcome-file>login.do</welcome-file>
+        </welcome-file-list>   
+            
+</web-app>
+ 
+ 
+ step 4: create the servlet file
+ 
+ ------------------------------LoginServlet.java----------------------------
+ 
+ package com.easylearning;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class LoginServlet
+ */
+@WebServlet("/login.do")
+public class LoginServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		
+		/*PrintWriter out = response.getWriter();
+		out.println("<html>");
+		out.println("<head>");
+		out.println("<title>My First Servlet demo</title>");
+		out.println("</head>");
+		out.println("<body>");
+		out.println("My First sample page");
+		out.println("</body>");
+		out.println("</html>");
+		*/
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/login.jsp");
+		rd.forward(request, response);
+		
+	}
+	
+}
+ 
+-------------------------------HomeServlet.java--------------------------------
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.easylearning.service.LoginService;
+
+/**
+ * Servlet implementation class HomeServlet
+ */
+@WebServlet("/home.do")
+public class HomeServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	
+	private LoginService service = new LoginService();
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		
+		String name = request.getParameter("name");
+		String password = request.getParameter("password");
+		
+		if(service.validate(name, password)) {
+			request.setAttribute("name", name);
+			request.setAttribute("password", password);
+			request.setAttribute("friendList", service.getFriendList(name));
+			request.getRequestDispatcher("/WEB-INF/views/homepage.jsp").forward(request, response);
+		}else {
+			request.setAttribute("errorMessage", "Invalid username and password");
+			request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request, response);
+		}
+	}
+
+}
+
+____________________________________________________________________________________________________
+
+
+step 5:
+
+src->webapp-> WEB-INF  -> views -> login.jsp
+
+  <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<h3 align="center">Login Page</h3>
+	<p><font color="red"> ${errorMessage }</font></p>
+	<form action="home.do" method="get">
+		<table>
+			<tr>	
+				<td>Username</td>
+				<td><input type="text" name="name"></td>
+			</tr>
+
+			<tr>
+				<td>Password</td>
+				<td><input type="text" name="password"></td>
+			</tr>
+
+			<tr>
+				<td></td>
+				<td><input type="submit" value="login"></td>
+			</tr>
+		</table>
+	</form>
+
+</body>
+</html>
+
+
+src->webapp-> WEB-INF  -> views -> homepage.jsp
+
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<h3 align="center">Login Page</h3>
+	<p><font color="red"> ${errorMessage }</font></p>
+	<form action="home.do" method="get">
+		<table>
+			<tr>	
+				<td>Username</td>
+				<td><input type="text" name="name"></td>
+			</tr>
+
+			<tr>
+				<td>Password</td>
+				<td><input type="text" name="password"></td>
+			</tr>
+
+			<tr>
+				<td></td>
+				<td><input type="submit" value="login"></td>
+			</tr>
+		</table>
+	</form>
+
+</body>
+</html>
+      
