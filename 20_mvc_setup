@@ -248,3 +248,8 @@ src->webapp-> WEB-INF  -> views -> homepage.jsp
 </body>
 </html>
       
+      
+step 6: run the maven mvc
+  right click on pom.xml
+  enter the below command in goal and run
+     tomcat7:run
