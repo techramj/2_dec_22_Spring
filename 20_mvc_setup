@@ -73,7 +73,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/x
 __________________________________________________________________________________________________________ 
  
  step 3: add the web.xml file
- 
+ a> create WEB-INF folder => src -> main -> webapp -> WEB-INF
  
  <web-app    xmlns="http://xmlns.jcp.org/xml/ns/javaee"
             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
