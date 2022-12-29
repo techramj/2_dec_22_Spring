@@ -1,0 +1,27 @@
+step 1: 
+   go to spring boot initializr: https://start.spring.io/
+   create the spring boot project selecting packaging as War
+   select spring-web dependency
+   
+step 2:Add below dependencies 
+
+  <dependency>
+        <groupId>org.apache.tomcat.embed</groupId>
+        <artifactId>tomcat-embed-jasper</artifactId>
+        <scope>provided</scope>
+  </dependency>
+
+   <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>jstl</artifactId>
+    </dependency>
+  
+step 3: create the folder WEB-INF and views
+    src->main->java->webapp ->WEB-INF
+     src->main->java->webapp ->WEB-INF -> views
+ 
+step 4: add the view resolver properties in application.properties file
+  spring.mvc.view.prefix=/WEB-INF/views/
+  spring.mvc.view.suffix=.jsp
+  
+  
